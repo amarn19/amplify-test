@@ -1,0 +1,36 @@
+version: 0.1
+backend:
+  phases:
+    preBuild:
+      commands:
+        - npm i node@10.13.0
+        - npm install -g serverless
+    build:
+      commands:
+        - cd server
+        - npm i
+        - serverless deploy --stage dev1
+    postBuild:
+      commands:
+        - cd ..
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - cd client
+        - npm install -g yarn
+        - yarn install
+    build:
+      commands:
+        - npm run build
+    postBuild:
+      commands:
+        - echo "b"
+        - pwd
+        - ls
+  artifacts:
+    files:
+      - '**/*'
+    baseDirectory: ./client/public/dist
+  cache:
+    path: []
