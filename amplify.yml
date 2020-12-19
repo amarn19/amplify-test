@@ -14,7 +14,7 @@ frontend:
         - pwd
         - ls
   artifacts:
-    baseDirectory: /public/dist
+    baseDirectory: /public
     files:
       - '**/*'
   cache:
