@@ -1,18 +1,5 @@
 version: 0.1
-backend:
-  phases:
-    preBuild:
-      commands:
-        - npm i node@10.13.0
-        - npm install -g serverless
-    build:
-      commands:
-        - cd server
-        - npm i
-        - serverless deploy --stage dev1
-    postBuild:
-      commands:
-        - cd ..
+
 frontend:
   phases:
     preBuild:
@@ -29,8 +16,9 @@ frontend:
         - pwd
         - ls
   artifacts:
+    baseDirectory: ./client/public/dist
     files:
       - '**/*'
-    baseDirectory: ./client/public/dist
   cache:
-    path: []
+    path: 
+      - node_modules/**/*
