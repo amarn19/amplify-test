@@ -4,7 +4,6 @@ frontend:
   phases:
     preBuild:
       commands:
-        - cd client
         - npm install -g yarn
         - yarn install
     build:
